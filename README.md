@@ -5,7 +5,7 @@ Una aplicación web moderna para buscar y visualizar GIFs utilizando la API de G
 ## ✨ Características
 
 - **🔍 Búsqueda de GIFs**: Busca cualquier GIF usando la API de Giphy
-- **💾 Sistema de Caché**: Almacena resultados de búsquedas previas para acceso instantáneo
+- **💾 Sistema de Caché Persistente**: Almacena resultados de búsquedas en localStorage para acceso instantáneo entre sesiones
 - **📱 Diseño Responsivo**: Optimizado para dispositivos móviles, tablets y desktop
 - **🎨 Interfaz Moderna**: Diseño limpio con tema oscuro y tipografía Montserrat
 - **⚡ Búsquedas Rápidas**: Historial de búsquedas previas con acceso directo
@@ -38,7 +38,7 @@ src/
 │       ├── gif.interface.ts
 │       └── giphy.response.ts
 ├── shared/                        # Componentes reutilizables
-│   └── components/
+│   └── components/nso_
 │       ├── CustomHeader.tsx
 │       └── SearchBar.tsx
 ├── mock-data/                     # Datos de prueba
@@ -57,7 +57,7 @@ src/
 
 1. **Clona el repositorio**
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/Escrodri/gifs-app.git
    cd gifs-app
    ```
 
@@ -103,15 +103,24 @@ npm run lint         # Ejecuta ESLint para verificar el código
 - **Búsqueda con Enter**: Presiona Enter o haz clic en "Buscar"
 - **Validación**: Ignora búsquedas vacías y duplicadas
 
-### Sistema de Caché Inteligente
-- **Almacenamiento en memoria**: Los resultados se guardan en `useRef` para persistir durante la sesión
-- **Acceso instantáneo**: Las búsquedas previas se cargan inmediatamente desde el caché
-- **Optimización de red**: Reduce las llamadas a la API de Giphy
+### Sistema de Caché Persistente
+- **Almacenamiento persistente**: Los resultados se guardan en `localStorage` para persistir entre sesiones del navegador
+- **Acceso instantáneo**: Las búsquedas previas se cargan inmediatamente desde el caché sin llamadas a la API
+- **Optimización de red**: Reduce significativamente las llamadas a la API de Giphy
+- **Recuperación automática**: Al recargar la página, se restaura automáticamente la última búsqueda y el historial completo
 
 ### Historial de Búsquedas
 - **Últimas 8 búsquedas**: Mantiene un historial limitado de términos buscados
+- **Persistencia**: El historial se mantiene entre sesiones del navegador
 - **Acceso directo**: Haz clic en cualquier término previo para repetir la búsqueda
 - **Interfaz intuitiva**: Etiquetas clickeables con hover effects
+
+### Persistencia de Datos
+- **localStorage**: Utiliza el almacenamiento local del navegador para mantener datos entre sesiones
+- **Caché de GIFs**: Almacena hasta 8 búsquedas con sus resultados completos
+- **Historial persistente**: Mantiene el historial de búsquedas incluso después de cerrar el navegador
+- **Recuperación automática**: Al abrir la aplicación, se restaura automáticamente el estado anterior
+- **Manejo de errores**: Si localStorage no está disponible, la aplicación funciona normalmente sin persistencia
 
 ### Diseño Responsivo
 - **Mobile First**: Optimizado para dispositivos móviles
@@ -182,9 +191,9 @@ Si encuentras algún bug o tienes sugerencias, por favor:
 
 ## 📞 Contacto
 
-- **Desarrollador**: [Tu Nombre]
-- **Email**: [tu-email@ejemplo.com]
-- **GitHub**: [@tu-usuario]
+- **Desarrollador**: Enmanuel Rodriguez
+- **Email**: enmanuelrodmac@gmail.com
+- **GitHub**: @escrodri
 
 ---
 
